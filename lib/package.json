@@ -1,6 +1,10 @@
 {
-  "name": "modules",
+  "name": "hbs_spa_quiz",
   "version": "0.1.0",
+  "dependencies": {
+    "handlebars": "^4.0.5",
+    "hbsfy": "^2.7.0"
+  },
   "devDependencies": {
     "grunt": "^0.4.0",
     "grunt-contrib-jshint": "^0.11.2",
