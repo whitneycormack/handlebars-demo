@@ -1,6 +1,6 @@
 "use strict";
 
-let carInventory = require('./carLotPromises'),
+let carInventory = require('./carLot'),
     eventStuff = require('./events');
 
 function populatePage (inventory) {

@@ -3,3 +3,4 @@ lib/npm-debug.log
 dist/
 css/
 lecture_notes.md
+lib/.sass-cache
