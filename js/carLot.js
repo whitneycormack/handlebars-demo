@@ -3,12 +3,6 @@
 var inventory = [];
 var carLot = {};
 
-var fillInventory = function(data) {
-  data.cars.forEach(function(element){
-    inventory.push(element);
-  });
-};
-
 carLot.getInventory = function () {
   return inventory;
 };
@@ -21,8 +15,7 @@ carLot.loadInventory = function () {
 
     inventoryLoader.addEventListener("load", function () {
       var data = JSON.parse(this.responseText);
-      fillInventory(data);
-      resolve(inventory); // No longer responsible for calling populatePage function
+      resolve(data); // No longer responsible for calling populatePage function
     });
   });
 };

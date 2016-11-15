@@ -1,14 +1,14 @@
 "use strict";
 
-var cardStyle = require('./cards'),
+let cardStyle = require('./cards'),
     cardWrapper = document.getElementById("inventory-cards"),
     input = document.getElementById("editInput");
 
-var throwError = function () {
+function throwError() {
   window.alert("Please click on a card to begin editing");
-};
+}
 
-var activateEvents = function() {
+function activateEvents() {
   cardWrapper.addEventListener("click", cardStyle.highlightCard);
   input.addEventListener("keyup", function() {
     var highlighted = document.getElementsByClassName('is-clicked');
@@ -18,7 +18,7 @@ var activateEvents = function() {
       cardStyle.editCard(event);
     }
   });
-};
+}
 
 module.exports = activateEvents;
 
