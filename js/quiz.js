@@ -17,14 +17,12 @@ Handlebars.registerHelper("increment", function(value) {
 });
 
 function populatePage (inventory) {
-  // Grab the div we want to apppend the cards to
-  let cards = document.getElementById("inventory-cards");
   // Make a new div to stick the rendered html into
   let newDiv = document.createElement("div");
   // carTemplate(inventory) binds our JS data and the hbs template into a view 
   // and renders it as HTML for the browser
   newDiv.innerHTML = carTemplate(inventory);
-  cards.appendChild(newDiv);
+  $("#inventory-cards").append(newDiv);
 
   // Now that the DOM is loaded, establish all the event listeners needed
   eventStuff();

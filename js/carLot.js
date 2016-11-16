@@ -8,14 +8,11 @@ carLot.getInventory = function () {
 };
 
 carLot.loadInventory = function () {
-  return new Promise( function (resolve, reject) {
-    var inventoryLoader = new XMLHttpRequest();
-    inventoryLoader.open("GET", "inventory.json");
-    inventoryLoader.send();
-
-    inventoryLoader.addEventListener("load", function () {
-      var data = JSON.parse(this.responseText);
-      resolve(data); // No longer responsible for calling populatePage function
+  return new Promise( (resolve, reject) => {
+    $.ajax({
+      url: "inventory.json"
+    }).done( (data) => {
+        resolve(data); // No longer responsible for calling populatePage function
     });
   });
 };
