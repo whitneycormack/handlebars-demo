@@ -1,0 +1,11 @@
+<h2>{{name}}! CMS System</h2>
+<p>
+  We currently carry quality vehicles like the 
+  {{#each carMakes}}
+    {{manufacturer}} {{model}}
+    {{#unless @last}}
+      and
+    {{/unless}}
+  {{/each}}
+  . Click here to view inventory and edit vehicle descriptions</p>
+<button id="seeCars">{{buttonText}}</button>

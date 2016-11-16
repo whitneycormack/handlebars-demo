@@ -5,7 +5,11 @@ let carInventory = require('./carLot'),
     // Require handlebars and our template's markup
     // so we can bind it to our car data to create a view
     Handlebars = require('hbsfy/runtime'),
-    carTemplate = require('../templates/car-grid.hbs');
+    carTemplate = require('../templates/car-grid.hbs'),
+    welcomeTemplate = require('../templates/welcome/welcome.hbs'),
+    welcomeData = require('../templates/welcome/welcome-data.js');
+
+$("#welcome").append(welcomeTemplate(welcomeData));
 
 // Register a partial to include as a 'sub-template' inside another template
 Handlebars.registerPartial("navbar", require('../templates/partials/nav-bar.hbs'));
@@ -14,6 +18,19 @@ Handlebars.registerPartial("navbar", require('../templates/partials/nav-bar.hbs'
 // // our markup
 Handlebars.registerHelper("increment", function(value) {
   return parseInt(value) + 1;
+});
+
+$("#welcome").click( function() {
+  $(this).hide();
+  carInventory.loadInventory()
+  .then(
+    function (inventoryFromLoadInventoryResolve) {
+      populatePage(inventoryFromLoadInventoryResolve);
+      console.log("carPromise", inventoryFromLoadInventoryResolve);
+    },
+    function (reason) {
+      console.error('Something went wrong', reason);
+    });
 });
 
 function populatePage (inventory) {
@@ -27,13 +44,3 @@ function populatePage (inventory) {
   // Now that the DOM is loaded, establish all the event listeners needed
   eventStuff();
 }
-
-carInventory.loadInventory()
-.then(
-  function (inventoryFromLoadInventoryResolve) {
-    populatePage(inventoryFromLoadInventoryResolve);
-    console.log("carPromise", inventoryFromLoadInventoryResolve);
-  },
-  function (reason) {
-    console.error('Something went wrong', reason);
-  });
